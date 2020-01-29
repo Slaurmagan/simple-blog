@@ -1,0 +1,28 @@
+<%= content_for :page_title,"All posts" %>
+
+
+
+
+<section class="section">
+	<div class="container">
+		<% @posts.each do |post| %>
+			<div class="card">
+				<div class="card-content">
+					<div class="media">
+						<div class="media-content">
+							<p class="title is-4"><%= link_to post.title,post_path(post) %></p>
+						</div>
+					</div>
+					<div class="content">
+						<%= post.body %>
+					</div>
+					<div class="comment-count">
+						<span class="tag is-rounded"><%= pluralize(post.comments.count,'comment') %></span>
+						<span class="tag is-rounded"><%= time_ago_in_words(post.created_at) %> ago</span>
+					</div>
+				</div>
+			</div>
+
+		<% end %>
+	</div>
+</section>
